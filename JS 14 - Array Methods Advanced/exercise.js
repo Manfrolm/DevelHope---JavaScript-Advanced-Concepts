@@ -1,8 +1,3 @@
-  function uncompletedNotes(notes) {
-   
-}
-
-
 const notes = [
   {
     id: 1,
@@ -54,4 +49,29 @@ const notes = [
 ];
 
 
-uncompletedNotes(notes);
+
+function uncompletedNotes(notes) {
+  const uncompletedTodos = [];
+
+  notes.forEach(note => {                                                  
+    const uncompletedTodosNote = note.todos.filter(todo => !todo.done);    
+    uncompletedTodos.push(uncompletedTodosNote.map(todo => todo.name));
+  });
+
+  return uncompletedTodos;
+}
+
+const uncompleted = uncompletedNotes(notes);
+console.log(uncompleted);
+
+
+
+/*
+Riga 54: Creo un array vuoto chiamato uncompletedTodos
+Riga 56: Ciclo l'array notes
+Riga 57: Utilizzo il metodo filter() per filtrare tutte le todo incomplete, utilizzo ! (not) per definire le todo che sono false (!true)
+Riga 58: Utilizzo il metodo push() per inserire gli elementi alla fine dell'array
+         Utilizzo il metodo map() per restituire un nuovo array con i soli nomi delle todo incomplete
+*/
+
+
