@@ -1,0 +1,33 @@
+<html>
+  <body>
+    <div id="container" style="display: flex; align-items: center;"></div>
+  </body>
+</html>
+
+<script>
+  const fetchData = async () => {
+    try {
+      const result = await fetch("https://jsonplaceholder.typicode.com/todos/4");
+      const data = await result.json();
+
+      console.log(data);
+
+      const div = document.querySelector("#container");
+
+      const h2 = document.createElement("h2");
+      h2.textContent = data.title;
+      div.appendChild(h2);
+
+
+      const input = document.createElement("input");
+      input.setAttribute("type", "checkbox");
+      input.checked = data.completed;
+      div.appendChild(input);
+
+    } catch (error){
+      console.error(error);
+    }
+  }
+
+  fetchData();
+</script>
