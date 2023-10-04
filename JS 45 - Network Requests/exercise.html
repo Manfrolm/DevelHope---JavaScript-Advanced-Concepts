@@ -6,6 +6,11 @@
 </html>
 
 <script>
+const div = document.querySelector("#container");
+
+const list = document.createElement("ul");
+div.appendChild(list);
+
   const fetchData = async () => {
     try{
       const result = await fetch("https://jsonplaceholder.typicode.com/todos");
@@ -15,11 +20,6 @@
 
 
       data.forEach(async (item) => {
-
-        const div = document.querySelector("#container");
-
-        const list = document.createElement("ul");
-        div.appendChild(list);
 
         const li = document.createElement("li");
         li.textContent = item.title;
